@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:m="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:b="http://bootsfaces.net/ui"
+    template="/template/Shared/layout.xhtml"
+      > 
+
+	<ui:define name="myContent">
+	<br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<section class="pager-sec">
+			<div class="container">
+				<div class="pager-pag">
+					<h3 class="no-mg">Recherche Réunion Privé</h3>
+				</div><!--pager-pag end-->
+			</div>
+		</section>
+
+<h:form id="form">
+
+	
+	<br/>
+	
+	<h:outputText  value="Parent :" /> 
+<h:selectOneMenu value="#{ReunionPriveBean.search}">
+    <f:selectItems value="#{ReunionPriveBean.GetAllPR()}" var="user" itemValue="#{user.id}" itemLabel="#{user.name}" />
+</h:selectOneMenu>
+	<a class="btn btn-default"><h:commandButton action="#{ReunionPriveBean.Get()}" value="Chercher"/></a>
+
+	<c:forEach items="#{ReunionPriveBean.GetAll()}" var="ReunionPr"
+						varStatus="status">
+						
+						<section class="block2">
+	    	<div class="container">
+<div class="our-features-sec">
+<div class="feature-services">
+		    			<div class="tab-content" id="nav-tabContent">
+							<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+								<div class="row">
+									<div class="col-lg-8">
+										<div class="cws-inp-details">
+										<h3>	  <h:outputText value="#{ReunionPr.parent.name} / #{ReunionPr.dateRdvP}" /></h3>
+										<h3>	  <h:outputText value="#{ReunionPr.lieuRdvP}" /></h3>
+											<p>   Categorie : <h:outputText value="#{ReunionPr.categories}" />	<br/>
+										  Importance : <h:outputText value="#{ReunionPr.imporatances}" /> </p>
+											<p>  Contenu : <h:outputText value="#{ReunionPr.motifRdvP}" /> </p>
+											<a class="btn btn-default" ><p:commandButton  action="#{ReunionPriveBean.redirectUpdate(ReunionPr.id)}" title="modifier" value="modifier" ></p:commandButton></a>
+												<a class="btn btn-default btn-green"><p:commandButton  action="#{ReunionPriveBean.DeleteReunionprive(ReunionPr.id)}" title="Supprimer" value="Supprimer" ></p:commandButton> </a>
+										
+										</div><!--cws-inp-details end-->
+									</div>
+									<div class="col-lg-4">
+										<div class="tb-img">
+											<m:graphicImage 
+									name="images/tb-img.jpg" />
+										</div><!--tb-img end-->
+									</div>
+								</div>
+							</div>
+							</div>
+	</div>						
+</div>
+</div> </section>
+</c:forEach>
+
+	</h:form>
+	
+		</ui:define>
+	
+</ui:composition>

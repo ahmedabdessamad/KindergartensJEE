@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"   
+     template="/template/Shared/layout.xhtml"
+                 >
+  <ui:define name="myContent">
+<br/> <br/> <br/> <br/> <br/> <br/>
+ <br/> <br/> <br/>
+ 
+<h:form id="form2">
+
+<h:panelGrid columns="2">
+	<h:outputText value="id"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.id}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="name"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.name}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="BirthDate"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.birthDate}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="gender"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.gender}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="parentId"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.parentId}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="image"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.image}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+<h:panelGrid columns="2">
+	<h:outputText value="profilJardinId"  style="font-weight:bold" />
+	<h:inputText value="#{EnfantBean.profilJardinId}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+
+<h:commandButton action="#{EnfantBean.UpdateEnfant(EnfantBean.id)}" value="Modifier"/>	
+<br/>
+</h:form>	
+
+		</ui:define>
+
+</ui:composition>

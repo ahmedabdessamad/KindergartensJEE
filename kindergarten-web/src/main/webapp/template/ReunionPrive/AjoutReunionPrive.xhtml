@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+           xmlns:b="http://bootsfaces.net/ui"
+    template="/template/Shared/layout.xhtml"
+    >
+    <ui:define name="myContent">
+    
+<br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/> <section class="pager-sec">
+			<div class="container">
+				<div class="pager-pag">
+					<h3 class="no-mg">Ajouter Réunion Privé</h3>
+				</div><!--pager-pag end-->
+			</div>
+		</section>
+		
+<h:form id="form">
+<h:panelGrid columns="2" >
+
+									
+<h:outputText value="Contenu : " /> <h:inputText value="#{ReunionPriveBean.motifRdvP}" />
+<h:outputText value="Lieu  : " /> <h:inputText value="#{ReunionPriveBean.lieuRdvP}" />
+<h:outputText value="Date :" />   <h:inputText value="#{ReunionPriveBean.dateRdvP}"  />
+
+<h:outputText value="Categorie : " /> <h:inputText value="#{ReunionPriveBean.categories}" />
+<h:outputText value="Importance  : " /> <h:inputText value="#{ReunionPriveBean.imporatances}" />
+
+<h:outputText value="Parent :" /> <h:selectOneMenu value="#{ReunionPriveBean.parentFk}">
+    <f:selectItems value="#{ReunionPriveBean.GetAllPR()}" var="user" itemValue="#{user.id}" itemLabel="#{user.name}" />
+</h:selectOneMenu>
+
+<p:commandButton value="Add" action="#{ReunionPriveBean.AjoutReunionPrive()}" ></p:commandButton> <br/>
+<p:commandButton value="ListReunionprive" action="#{ReunionPriveBean.IndexGetAllReunionprive()}" ></p:commandButton>
+
+</h:panelGrid>
+
+</h:form>
+
+
+</ui:define>
+		
+</ui:composition>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"   
+     template="/template/Shared/layout.xhtml"
+                 >
+  <ui:define name="myContent">
+<br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<section class="pager-sec">
+			<div class="container">
+				<div class="pager-pag">
+					<h3 class="no-mg">Modifier Réunion Privé</h3>
+				</div><!--pager-pag end-->
+			</div>
+		</section>
+ 
+<h:form id="form2">
+<h:panelGrid columns="2" >
+	<h:outputText value="Contenu"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.motifRdvP}" >
+	</h:inputText>
+
+
+	<h:outputText value="Lieu"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.lieuRdvP}" >
+	</h:inputText>
+
+
+
+	<h:outputText value="Date"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.dateRdvP}" >
+	</h:inputText>
+
+
+<h:outputText value="categorie"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.categories}" >
+	</h:inputText>
+	
+	
+	<h:outputText value="Importance"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.imporatances}" >
+	</h:inputText>
+
+	<h:outputText value="Parent"  style="font-weight:bold" />
+	<h:selectOneMenu value="#{ReunionPriveBean.parentFk}">
+    <f:selectItems value="#{ReunionPriveBean.GetAllPR()}" var="user" itemValue="#{user.id}" itemLabel="#{user.name}" />
+</h:selectOneMenu>
+
+
+<!-- 
+<h:panelGrid columns="2">
+	<h:outputText value="parent"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.parent}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid>
+
+<h:panelGrid columns="2">
+	<h:outputText value="directeur"  style="font-weight:bold" />
+	<h:inputText value="#{ReunionPriveBean.directeur}" styleClass="form-control" label="adresse">
+	</h:inputText>
+</h:panelGrid> -->
+<br/>
+<h:commandButton action="#{ReunionPriveBean.UpdateReunionprive(ReunionPriveBean.id)}" value="Modifier"/>	
+</h:panelGrid>
+</h:form>	
+
+		</ui:define>
+
+</ui:composition>

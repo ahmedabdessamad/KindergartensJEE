@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+           xmlns:b="http://bootsfaces.net/ui"
+    template="/template/Shared/layout.xhtml"
+    >
+    <ui:define name="myContent">
+    
+<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> 
+<h:head> Liste des enfant inscrit </h:head> 
+<br/> <br/> <br/> <br/> <br/> <br/> 
+
+<h:form id="form">
+<p:dataTable var="enf" value="#{EnfantBean.doGetAll()}">
+
+ 	<p:column headerText="id">
+        <h:outputText value="#{enf.id}" />
+    </p:column>
+    
+    <p:column headerText="Name">
+        <h:outputText value="#{enf.name}" />
+    </p:column>
+ 
+    <p:column headerText="birthDate">
+        <h:outputText value="#{enf.birthDate}" />
+    </p:column>
+    
+    <p:column headerText="gender">
+        <h:outputText value="#{enf.gender}" />
+    </p:column>
+    
+    <p:column headerText="parentId">
+        <h:outputText value="#{enf.parentId}" />
+    </p:column>
+    
+    <p:column headerText="image">
+        <h:outputText value="#{enf.image}" />
+    </p:column>
+    
+      <p:column headerText="profilJardinId">
+        <h:outputText value="#{enf.profilJardinId}" />
+    </p:column>  
+    
+    
+    
+    
+     <p:column headerText="Nom JArdin">
+        <h:outputText value="#{enf.profilJardin.name}" />
+    </p:column>  
+    
+    
+    
+
+    <!--  
+           		  <p:commandButton icon="ui-icon-pencil" action="#{newPostBean.getNewPostToEdit(enf.id)}" title="Edit"></p:commandButton>  		 
+    -->
+        <p:column headerText="Action" >
+       		 <p:commandButton icon="ui-icon-cancel" action="#{EnfantBean.DeleteEnfant(enf.id)}" title="Delete" value="Delete" ></p:commandButton>
+  <p:commandButton icon="ui-icon-cancel" action="#{EnfantBean.redirectUpdate(enf.id)}" title="Update" value="Update" ></p:commandButton>
+    
+    	</p:column>
+      
+ <p:column headerText="Action" >
+    <b:commandButton look="success" value="Download PDF" action="#{EnfantBean.Accepter(enf.id)}"  />
+</p:column>
+ 
+</p:dataTable>
+</h:form>
+<br/> <br/>
+<p:commandButton value="Ajouter Enfant a une jardin d'enfant" action="#{EnfantBean.RedirectAjoutEnf()}" ></p:commandButton>
+<p:commandButton value="Rechercher Enfant par nom" action="#{EnfantBean.RedirectSearchEnf()}" ></p:commandButton>
+
+
+
+		</ui:define>
+
+</ui:composition>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/template/Shared/layout.xhtml"
+      > 
+
+	<ui:define name="myContent">
+	<br/> <br/> <br/> <br/> <br/> 	<br/> <br/> <br/> <br/> <br/>
+	Recherche enfant par nom: <br/>
+
+<h:form id="form">
+
+	
+	<br/>
+	
+	First name
+	<p:inputText value="#{EnfantBean.txtname}"></p:inputText>
+	<h:commandButton action="#{EnfantBean.doGet()}" value="Chercher"/>
+
+	<p:dataTable value="#{EnfantBean.doGetAll()}" var="e" border="1"  rows="10" >
+	<p:column width="50">
+				<f:facet name="header">
+				<h:outputText value="" />
+				</f:facet>
+						</p:column>
+
+	
+								
+	<p:column width="100">
+						<f:facet name="header">id</f:facet>#{e.id}</p:column>
+			
+   						
+	<p:column width="100">
+						<f:facet name="header">name</f:facet>#{e.name}</p:column>
+			
+			
+	<p:column width="100">
+						<f:facet name="header">Birthdate</f:facet>#{e.birthDate}</p:column>
+			
+	<p:column width="100">
+						<f:facet name="header">gender</f:facet>#{e.gender}</p:column>
+			
+	<p:column width="100">
+						<f:facet name="header">Parentid</f:facet>#{e.parentId}</p:column>
+			
+	<p:column width="100">
+						<f:facet name="header">image</f:facet>#{e.image}</p:column>
+			
+	<p:column width="100">
+						<f:facet name="header">JardinId</f:facet>#{e.profilJardinId}</p:column>
+														
+	
+				
+	</p:dataTable>
+	</h:form>
+	
+		</ui:define>
+	
+</ui:composition>
